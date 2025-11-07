@@ -1,7 +1,5 @@
 package com.example.basicscodelab
 
-
-import android.R
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import android.R.attr.onClick
+import android.content.res.Configuration
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
@@ -34,10 +33,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.basicscodelab.ui.theme.BasicsCodelabTheme
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             BasicsCodelabTheme {
                 MyApp(modifier = Modifier.fillMaxSize())
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity() {
 fun MyApp(modifier: Modifier = Modifier){
     var shouldShowOnboarding by remember { mutableStateOf(true) }
 
-    Surface(modifier) {
+    Surface(modifier, color = MaterialTheme.colorScheme.background) {
         if (shouldShowOnboarding) {
             OnboardingScreen(onContinueClicked = { shouldShowOnboarding = false })
         } else {
@@ -60,22 +61,8 @@ fun MyApp(modifier: Modifier = Modifier){
 }
 
 @Composable
-private fun Greetings(
-    modifier: Modifier = Modifier,
-    names: List<String> = List(120) { "$it" }
-) {
-    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
-        items (items = names) { name->
-            Greeting(name = name)
-        }
-    }
-}
-
-@Composable
 fun OnboardingScreen(onContinueClicked: () -> Unit,
-    modifier: Modifier = Modifier) {
-    var shouldShowOnboarding by remember { mutableStateOf(true) }
-
+                     modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -87,6 +74,18 @@ fun OnboardingScreen(onContinueClicked: () -> Unit,
             onClick = onContinueClicked
         ) {
             Text("Continue")
+        }
+    }
+}
+
+@Composable
+private fun Greetings(
+    modifier: Modifier = Modifier,
+    names: List<String> = List(1000) { "$it" }
+) {
+    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
+        items (items = names) { name->
+            Greeting(name = name)
         }
     }
 }
@@ -134,6 +133,8 @@ fun OnboardingPreview() {
         OnboardingScreen(onContinueClicked = {})
     }
 }
+
+@Preview(showBackground = true, widthDp = 320, uiMode = UI_MODE_NIGHT_YES, name = "GreetingPreviewDark")
 
 @Preview(showBackground = true, widthDp = 320)
 @Composable
