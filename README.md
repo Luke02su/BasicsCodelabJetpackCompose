@@ -57,6 +57,6 @@ Mostra uma lista animada de cartões. Cada cartão pode ser expandido para revel
 ```kotlin
 fun main() {
     println("Code by Lucas Samuel Dias!")
-    println("Welcome to the Basics Codelab of Lucas using Jetpack Compose!")
+    println("Welcome to the Basics Codelab using Jetpack Compose!")
 }
 
