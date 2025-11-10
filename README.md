@@ -28,14 +28,14 @@ O projeto demonstra os fundamentos da interface declarativa do Compose, incluind
 📸 **Tela inicial (Onboarding)**  
 Exibe uma mensagem de boas-vindas e um botão "Continue".
 
-<p align="left">
+<p align="center">
    <img width="300" height="600" alt="Tela 1" src="https://github.com/user-attachments/assets/f26d3ab7-08ab-4fc2-88fb-e7cc1e1bc5d6" />
 </p>
 
 📜 **Lista de Cumprimentos (Greetings)**  
 Mostra uma lista animada de cartões. Cada cartão pode ser expandido para revelar um texto adicional.
 
-<p align="left">
+<p align="center">
    <img width="300" height="600" alt="Tela 1" src="https://github.com/user-attachments/assets/63b8c61b-146e-4f48-a65a-99a154d2ee37" />
 </p>
 
